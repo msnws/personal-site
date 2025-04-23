@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="navbar">
+    <h1>Mason Weis</h1>
+    <nav class="navLinks">
+        <ul>
+            <li><a href="#">Buttons</a></li>
+            <li><a href="#">Cards</a></li>
+            <li><a href="#">Navigation</a></li>
+            <li><a href="#">Forms</a></li>
+            <li><a href="#">Interactions</a></li>
+        </ul>
+    </nav>
+    <div class="hamburgerDiv" aria-label="menu">
+        <button class="hamburger">
+            <Icon name="mdi:hamburger-menu" />
+        </button>
+    </div>
+</div>
+
+<style>
+    h1 {
+        color: #eee;
+        font-family: "IBM Plex Mono", monospace;
+    }
+
+    .navbar {
+        position: sticky;
+        background-color: #222;
+        top: 0;
+        z-index: 10;
+    }
+
+    .hamburger {
+        color: #eee;
+        border: 1px solid #eee;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: transparent;
+        border-radius: 10%;
+    }
+
+    @media (max-width: 744px) {
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .hamburgerDiv,
+        .hamburger {
+            display: block;
+        }
+
+        .navLinks {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    // Add your JavaScript here
+</script>
