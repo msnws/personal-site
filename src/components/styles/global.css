@@ -1,0 +1,45 @@
+:root {
+    --bg: #f8f7f4;
+    --surface: #ffffff;
+    --brand: #2e3a59;
+    --cta: #b65d5d;
+    --accent: #5a8c74;
+    --highlight: #f5a623;
+    --error: #d94f4f;
+    --text: #1e1e1e;
+    --text-muted: #5a5a5a;
+    /* hero gradient */
+    --hero-start: #2e3a59;
+    --hero-end: #b65d5d;
+}
+
+body.dark-mode {
+    --bg: #121418;
+    --surface: #1a1d23;
+    --brand: #8fa4d4;
+    --cta: #da8d8d;
+    --accent: #a2c8b2;
+    --highlight: #ffc85c;
+    --error: #e89a9a;
+    --text: #eaeaea;
+    --text-muted: #b0b0b0;
+    --hero-start: #1a1d23;
+    --hero-end: #8fa4d4;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5;
+}
+
+@media (max-width: 744px) {
+    h1 {
+        font-size: 2.3rem;
+    }
+}

@@ -1,32 +1,27 @@
 ---
 import "../components/styles/global.css";
 import FontHead from "../components/head.astro";
-import Nav from "../components/nav.astro";
+import Header from "../components/nav.astro";
 import Hero from "../layouts/hero.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import About from "../layouts/about.astro";
 ---
 
-<!-- Remove Base Layout and put its contents here. --><!doctype html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mason Weis</title>
+        <title>Personal Site</title>
         <FontHead />
     </head>
     <body>
         <header>
             <div class="navmenu">
-                <Nav />
+                <Header />
             </div>
         </header>
         <main>
             <section class="hero">
                 <Hero />
-            </section>
-            <section class="about">
-                <About />
             </section>
         </main>
     </body>
@@ -34,14 +29,7 @@ import About from "../layouts/about.astro";
 
 <style>
     .hero {
+        position: fixed;
         top: 0;
     }
-
-    .navmenu {
-        position: fixed;
-        width: 100%;
-    }
 </style>
-
-<!-- <BaseLayout />
-<About /> -->
