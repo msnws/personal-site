@@ -1,0 +1,78 @@
+---
+import Button from "../components/primarybutton.astro";
+---
+
+<div class="contactForm">
+    <form>
+        <div class="nameInput">
+            <label for="name">Name:</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="inputClass"
+            />
+        </div>
+        <div class="emailInput">
+            <label for="name">Email:</label>
+            <input
+                type="text"
+                id="email"
+                name="email"
+                required
+                class="inputClass"
+            />
+        </div>
+        <div class="messageInput">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required class="inputClass"
+            ></textarea>
+        </div>
+        <Button type="submit">Submit</Button>
+    </form>
+</div>
+
+<style>
+    .contactForm {
+        background-color: var(--surface);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 5px;
+        box-shadow: var(--dropShadow);
+        padding: 1rem;
+    }
+
+    .inputClass {
+        border-radius: 7px;
+        background-color: var(--bg);
+        padding: 1rem;
+        width: 100%;
+        border: 1px solid var(--divider);
+        margin-bottom: 1rem;
+    }
+
+    .nameInput,
+    .emailInput,
+    .messageInput {
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        max-width: 85%;
+    }
+
+    label {
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: var(--font-small);
+    }
+
+    input:focus-within,
+    textarea:focus-within {
+        border: 1.5px solid var(--brand);
+        outline: none;
+    }
+</style>

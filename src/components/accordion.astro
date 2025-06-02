@@ -1,0 +1,222 @@
+---
+// src/components/Accordion.astro
+import { Icon } from "astro-icon/components";
+
+/**
+ * Defines the structure for a single accordion item's data.
+ * @property {string} title - The title displayed on the accordion button.
+ * @property {string} content - The HTML content to be displayed when the item is expanded.
+ */
+export interface AccordionItemProps {
+    title: string;
+    content: string;
+}
+
+/**
+ * Props for the Accordion component.
+ * @property {AccordionItemProps[]} items - An array of accordion item objects.
+ * @property {string} idPrefix - A unique string prefix for ARIA IDs to ensure accessibility
+ * when multiple accordion components are used on the same page.
+ */
+export interface Props {
+    items: AccordionItemProps[];
+    idPrefix: string;
+}
+
+const { items, idPrefix } = Astro.props;
+---
+
+<div class="accordion-wrapper" data-accordion-id={idPrefix}>
+    {
+        items.map((item, index) => (
+            <div class="accordion-item-container">
+                <button
+                    class:list={[
+                        "accordion-trigger",
+                        {
+                            "accordion-top": index === 0, // First item
+                            "accordion-bottom": index === items.length - 1, // Last item
+                            // A single item is both top and bottom, handled by individual radius classes
+                        },
+                    ]}
+                    aria-expanded="false"
+                    aria-controls={`panel-${idPrefix}-${index}`}
+                    id={`trigger-${idPrefix}-${index}`}
+                >
+                    <span class="accordion-title">{item.title}</span>
+                    <span class="chevron">
+                        <Icon name="mdi:chevron-down" />
+                    </span>
+                </button>
+                <div
+                    class="accordion-panel"
+                    id={`panel-${idPrefix}-${index}`}
+                    role="region"
+                    aria-labelledby={`trigger-${idPrefix}-${index}`}
+                >
+                    <div class="panel-content-inner">
+                        <Fragment set:html={item.content} />
+                    </div>
+                </div>
+            </div>
+        ))
+    }
+</div>
+
+<style>
+    /* Assuming these CSS variables are defined globally (e.g., in a global.css or :root) */
+    /* var(--surface), var(--text), var(--brand) */
+
+    .accordion-wrapper {
+        width: 80%; /* Matches original .accordion width relative to its container */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* .accordion-item-container is a structural div, no specific styles from original */
+
+    .accordion-trigger {
+        background-color: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: 1.5px solid transparent; /* Key for hover/active effect */
+        outline: none;
+        transition: border-color 0.4s; /* Smooth border color change */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative; /* Ensures proper stacking if needed */
+        z-index: 1;
+        font-size: var(--font-base);
+        font-weight: 600;
+    }
+
+    .accordion-trigger.active,
+    .accordion-trigger:hover {
+        border-color: var(--brand); /* Show brand border on hover/active */
+    }
+
+    .accordion-panel {
+        background-color: var(--surface);
+        color: var(--text-muted);
+        font-size: var(--font-small);
+        overflow: hidden;
+        max-height: 0; /* Collapsed by default */
+        transition: max-height 0.3s ease-out; /* Smooth expand/collapse animation */
+        width: 100%;
+        /* The panel itself does not have a border in the original design */
+    }
+
+    .panel-content-inner {
+        padding: 0 18px; /* Horizontal padding as per original .panel */
+    }
+
+    .accordion-panel.active .panel-content-inner {
+        padding-top: 18px; /* Add vertical padding when panel is active/open */
+        padding-bottom: 18px;
+    }
+
+    .chevron {
+        color: var(--text);
+        font-size: 1.5rem;
+        transition:
+            color 0.3s ease,
+            transform 0.3s ease; /* Smooth chevron transitions */
+    }
+
+    .accordion-trigger:hover .chevron,
+    .accordion-trigger.active .chevron {
+        color: var(--brand);
+    }
+
+    .accordion-trigger.active .chevron {
+        transform: rotate(180deg); /* Rotate chevron when active */
+    }
+
+    /* Rounded corners for the buttons */
+    .accordion-trigger.accordion-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .accordion-trigger.accordion-bottom {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    /* If an item is the only one, it's both top and bottom, so both above rules apply.
+     If you need specific styling for a single item (e.g., all corners rounded 10px always): */
+    .accordion-trigger.accordion-top.accordion-bottom {
+        border-radius: 10px;
+    }
+</style>
+
+<script is:inline define:vars={{ idPrefix }}>
+    // This script runs for each instance of the Accordion component.
+    // It's scoped to the specific accordion instance using the `idPrefix`.
+    const accordionWrapper = document.querySelector(
+        `.accordion-wrapper[data-accordion-id="${idPrefix}"]`,
+    );
+
+    if (accordionWrapper) {
+        const buttons = accordionWrapper.querySelectorAll(".accordion-trigger");
+
+        buttons.forEach((button) => {
+            const panel = button.nextElementSibling; // The panel is the next sibling
+
+            if (!panel || !panel.classList.contains("accordion-panel")) {
+                console.error("Accordion panel not found for button:", button);
+                return;
+            }
+
+            // ARIA attributes are set in the template, this script handles interactions.
+            button.addEventListener("click", () => {
+                const isExpanded =
+                    button.getAttribute("aria-expanded") === "true";
+
+                // Toggle current item
+                button.classList.toggle("active");
+                button.setAttribute("aria-expanded", String(!isExpanded));
+                panel.classList.toggle("active");
+
+                if (!isExpanded) {
+                    // If it was closed, now opening
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } else {
+                    // If it was open, now closing
+                    panel.style.maxHeight = null;
+                }
+
+                // Optional: Close other accordion items in this group when one is opened.
+                // Remove this loop if you want multiple items to be open simultaneously.
+                buttons.forEach((otherButton) => {
+                    if (
+                        otherButton !== button &&
+                        otherButton.classList.contains("active")
+                    ) {
+                        otherButton.classList.remove("active");
+                        otherButton.setAttribute("aria-expanded", "false");
+                        const otherPanel = otherButton.nextElementSibling;
+                        if (
+                            otherPanel &&
+                            otherPanel.classList.contains("accordion-panel")
+                        ) {
+                            otherPanel.classList.remove("active");
+                            // CORRECTED LINE: Removed 'as HTMLElement'
+                            otherPanel.style.maxHeight = null;
+                        }
+                    }
+                });
+            });
+        });
+    } else {
+        // This error is unlikely if the component renders correctly but is a safeguard.
+        console.error(
+            `Accordion wrapper with data-accordion-id="${idPrefix}" not found.`,
+        );
+    }
+</script>

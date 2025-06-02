@@ -1,0 +1,22 @@
+---
+interface Props {
+    class?: string;
+    title: string;
+    name?: string;
+    tagName: string;
+    open?: boolean;
+
+    [key: string]: string | number | boolean | undefined;
+}
+
+const {
+    class: className,
+    title,
+    name,
+    tagName = h3,
+    open = false,
+    ...rest
+} = Astro.props;
+
+const Tag = tagName;
+---

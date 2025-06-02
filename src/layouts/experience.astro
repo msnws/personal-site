@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+import Accordion from "../components/accordion.astro";
+
+const experienceAccordionItems = [
+    {
+        title: "MainStreet Advisors",
+        content: `
+      <p>
+        MainStreet Advisors is a financial services firm that provides investment management and advisory services.
+        I worked as a Front End Developer, focusing on building responsive and accessible web applications.
+      </p>
+    `,
+    },
+    {
+        title: "Freelance",
+        content: `
+      <p>
+        As a freelance developer, I collaborated with various clients to create custom websites and applications,
+        enhancing their online presence and user experience.`,
+    },
+    {
+        title: "PerkSpot",
+        content: `
+        <p>
+          PerkSpot is a benefits platform that helps companies provide employee perks and discounts.
+          I contributed as a Front End Developer, improving the user interface and experience of their web applications.
+        </p>
+      `,
+    },
+    {
+        title: "UpClose Printing",
+        content: `
+        <p>
+          UpClose Printing is a printing service that specializes in custom print solutions.
+          I worked as a Front End Developer, focusing on building an intuitive and user-friendly online ordering system.
+        </p>
+      `,
+    },
+];
+---
+
+<div class="container">
+    <div class="header">
+        <h3>Experience</h3>
+    </div>
+    <Accordion items={experienceAccordionItems} idPrefix="experience" />
+</div>
+
+<!-- <div class="container">
+    <div class="header">
+        <h3>Experience</h3>
+    </div>
+    <button class="accordion accordionTop"
+        >MainStreet Advisors <span class="chevron"
+            ><Icon name="mdi:chevron-down" /></span
+        ></button
+    >
+    <div class="panel">
+        <p>Lorem ipsum...</p>
+    </div>
+    <button class="accordion"
+        >Freelance <span class="chevron"><Icon name="mdi:chevron-down" /></span
+        ></button
+    >
+    <div class="panel">
+        <p>Lorem ipsum...</p>
+    </div>
+    <button class="accordion"
+        >PerkSpot <span class="chevron"><Icon name="mdi:chevron-down" /></span
+        ></button
+    >
+    <div class="panel">
+        <p>Lorem ipsum...</p>
+    </div>
+    <button class="accordion accordionBottom"
+        >UpClose Printing <span class="chevron"
+            ><Icon name="mdi:chevron-down" /></span
+        ></button
+    >
+    <div class="panel">
+        <p>Lorem ipsum...</p>
+    </div>
+</div> -->
+
+<style>
+    .header {
+        width: 80%;
+    }
+</style>

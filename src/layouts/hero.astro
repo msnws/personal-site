@@ -1,5 +1,5 @@
 ---
-import Button from "../components/button.astro";
+import Button from "../components/primarybutton.astro";
 ---
 
 <div class="container">
@@ -38,14 +38,15 @@ import Button from "../components/button.astro";
         justify-content: center;
         align-items: center;
         flex-direction: column; */
-        background-color: #222222;
+        background: var(--hero-gradient);
+        background-color: var(--bg);
         gap: 1.2rem;
         padding: 1rem;
         top: 0;
     }
 
     p {
-        font-size: 0.85rem;
+        font-size: 1.1rem;
     }
 
     /* .leadPhoto {
@@ -66,7 +67,7 @@ import Button from "../components/button.astro";
     .subCopy,
     .smallHead {
         width: 80%;
-        color: var(--bg);
+        color: var(--text);
     }
 
     .subCopy {
@@ -74,7 +75,7 @@ import Button from "../components/button.astro";
     }
 
     .leadText h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: bold;
         margin-bottom: 1rem;
         line-height: 1.2;

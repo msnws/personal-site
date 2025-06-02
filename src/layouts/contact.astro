@@ -1,0 +1,39 @@
+---
+import Form from "../components/form.astro";
+---
+
+<div class="container">
+    <div class="header">
+        <h2>Let's get in touch.</h2>
+    </div>
+    <div class="subCopy">
+        <p>
+            Whether you have a question, want to collaborate, or just want to
+            say hi, feel free to reach out!
+        </p>
+    </div>
+    <div class="contactForm">
+        <Form />
+    </div>
+</div>
+
+<style>
+    .container {
+        background: var(--hero-gradient);
+        background-color: var(--bg);
+    }
+
+    .header {
+        width: 80%;
+    }
+
+    .subCopy {
+        color: var(--text-muted);
+        width: 80%;
+        margin-top: -1rem;
+    }
+
+    .contactForm {
+        width: 80%;
+    }
+</style>

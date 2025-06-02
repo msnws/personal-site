@@ -28,11 +28,12 @@ import { Icon } from "astro-icon/components";
         top: 0;
         z-index: 10;
         height: 3rem;
+        transition: all 0.3s ease;
     }
 
     .hamburger {
-        color: var(--bg);
-        border: 1px solid var(--bg);
+        color: var(--text);
+        border: 1.5px solid var(--text);
         width: 2.5rem;
         height: 2.5rem;
         display: flex;
@@ -44,7 +45,7 @@ import { Icon } from "astro-icon/components";
     }
 
     h1 {
-        color: var(--bg);
+        color: var(--text);
         font-size: 1.5rem;
     }
 
@@ -68,5 +69,14 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-    // Add your JavaScript here
+    const navBar = document.querySelector(".navbar");
+    window.onscroll = () => {
+        if (window.scrollY > 0) {
+            navBar.style.backgroundColor = "var(--bg)";
+            navBar.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
+        } else {
+            navBar.style.backgroundColor = "transparent";
+            navBar.style.boxShadow = "none";
+        }
+    };
 </script>
