@@ -21,17 +21,18 @@
     --font-xl: 1.5rem;
     --line-height: 1.6;
 
-    --dropShadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    --dropShadow: 0 3px 6px rgba(0, 0, 0, 0.08);
     --bordRad: 10%;
 }
 
 html.dark {
-    --bg: /*#0f1214*/ #15181b;
-    --surface: #1e2124;
+    --bg: /*#0f1214 #15181b*/ #1e2124;
+    --surface: #282b2f;
     --brand: #3662e3;
     --secondary: #accefb;
     --text: #eaeaea;
     --text-muted: #b0b0b0;
+    --text-muted-dark: #888;
     --text-transparent: #eaeaeaee;
     --disabled: #ffffff11;
     --disabled-dark: #ffffff33;
@@ -63,8 +64,18 @@ body {
     color: var(--text);
 }
 
+.subCopy {
+    color: var(--text-muted);
+    width: 90%;
+    margin-top: -1rem;
+}
+
 @media (max-width: 744px) {
     h1 {
         font-size: 2.3rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
     }
 }

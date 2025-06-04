@@ -7,6 +7,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import About from "../layouts/about.astro";
 import Experience from "../layouts/experience.astro";
 import Contact from "../layouts/contact.astro";
+import Footer from "../components/footer.astro";
 ---
 
 <!-- Remove Base Layout and put its contents here. --><!doctype html>
@@ -37,10 +38,16 @@ import Contact from "../layouts/contact.astro";
                 <Contact />
             </section>
         </main>
+        <footer>
+            <Footer />
+        </footer>
     </body><script src="../scripts/darkmodeinit.js"></script>
 </html>
 
 <style>
+    body {
+        background-color: var(--bg);
+    }
     .navmenu {
         z-index: 1000;
     }
@@ -56,6 +63,7 @@ import Contact from "../layouts/contact.astro";
 
     #experience {
         z-index: -1;
+        padding-bottom: 2rem;
     }
 </style>
 

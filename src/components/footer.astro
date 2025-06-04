@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="footerBody">
+    <hr />
+    <div class="footerContainer">
+        <div class="header">
+            <h2>Mason Weis</h2>
+        </div>
+        <div class="footerLinks">
+            <div class="link">
+                <a href="https://github.com/msnws" target="_blank"
+                    ><Icon name="mdi:github" /></a
+                >
+            </div>
+            <div class="link">
+                <a
+                    href="https://www.linkedin.com/in/mason-weis/"
+                    target="_blank"><Icon name="mdi:linkedin" /></a
+                >
+            </div>
+            <div class="link">
+                <a href="mailto:mason@mason-weis.com" target="_blank"
+                    ><Icon name="mdi:email" /></a
+                >
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .footerBody {
+        margin-top: 1.5rem;
+    }
+
+    .footerContainer {
+        /* margin-bottom: 0.3rem; */
+        display: flex;
+        flex-direction: row;
+        background-color: var(--bg);
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem 2rem;
+        height: 100%;
+        margin-top: -0.5rem;
+    }
+
+    .footerLinks {
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* This centers icons vertically */
+        justify-content: flex-start;
+        height: 100%; /* or remove if unnecessary */
+        gap: 0.5rem; /* optional: spacing between icons */
+    }
+
+    .footerLinks svg {
+        display: block;
+    }
+
+    .link {
+        display: flex;
+        align-items: center; /* ensures the icon inside is vertically centered */
+        justify-content: center;
+    }
+
+    .footerLinks a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 1.3rem;
+    }
+
+    .footerLinks a:hover {
+        color: var(--brand);
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        color: var(--text);
+    }
+
+    hr {
+        width: 90%;
+        border: 0.5px solid #444;
+    }
+</style>

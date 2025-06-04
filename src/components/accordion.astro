@@ -68,9 +68,10 @@ const { items, idPrefix } = Astro.props;
     /* var(--surface), var(--text), var(--brand) */
 
     .accordion-wrapper {
-        width: 80%; /* Matches original .accordion width relative to its container */
+        width: 90%; /* Matches original .accordion width relative to its container */
         margin-left: auto;
         margin-right: auto;
+        box-shadow: var(--dropShadow);
     }
 
     /* .accordion-item-container is a structural div, no specific styles from original */
@@ -139,19 +140,19 @@ const { items, idPrefix } = Astro.props;
 
     /* Rounded corners for the buttons */
     .accordion-trigger.accordion-top {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
     }
 
     .accordion-trigger.accordion-bottom {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 
     /* If an item is the only one, it's both top and bottom, so both above rules apply.
      If you need specific styling for a single item (e.g., all corners rounded 10px always): */
     .accordion-trigger.accordion-top.accordion-bottom {
-        border-radius: 10px;
+        border-radius: 7px;
     }
 </style>
 
