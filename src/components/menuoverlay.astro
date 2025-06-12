@@ -1,0 +1,43 @@
+<div>
+    <ul>
+        <li class="menuOption"><a href="#about">About</a></li>
+        <li class="menuOption"><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin: 1.5rem;
+    }
+
+    a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    a:hover {
+        background-color: var(--brand-hl4);
+        color: var(--secondary);
+    }
+</style>
+
+<script>
+    const menuOption = document.querySelectorAll(".menuOption");
+
+    menuOption.forEach((option) => {
+        option.addEventListener("click", () => {
+            const mobileOverlay = document.querySelector(".mobileOverlay");
+            mobileOverlay.classList.remove("active");
+        });
+    });
+</script>

@@ -3,72 +3,64 @@ import Button from "../components/primarybutton.astro";
 ---
 
 <div class="container">
-    <div class="smallHead">
-        <h3>Hello, my name is</h3>
+    <div class="hero-text">
+        <div class="smallHead">
+            <h3>Hello, my name is</h3>
+        </div>
+        <div class="leadText">
+            <h1>Mason Weis</h1>
+        </div>
+        <div class="subCopy">
+            <p>Designer and Developer in Chicago, IL.</p>
+        </div>
+        <div class="cta">
+            <a href="#contact"><Button>Let's Talk</Button></a>
+        </div>
     </div>
-    <div class="leadText">
-        <h1>Mason Weis</h1>
-    </div>
-    <div class="subCopy">
-        <p>Designer and Developer in Chicago, IL.</p>
-    </div>
-    <div class="cta">
-        <Button>Let's Talk</Button>
+    <div class="image-wrapper">
+        <img
+            src="src/assets/mason-photo-2.png"
+            loading="lazy"
+            decoding="async"
+        />
     </div>
 </div>
 
 <style>
-    h3 {
-        text-transform: uppercase;
-        font-weight: 600;
-        font-size: 0.85rem;
-        letter-spacing: 0.12rem;
+    .hero-text {
+        width: 50%;
     }
 
     .container {
         height: 85vh;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
-        /* display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column; */
+        justify-content: space-between;
         background: var(--hero-gradient);
         background-color: var(--bg);
-        padding: 1rem;
-        top: 0;
         border-bottom: 1px solid var(--divider);
-    }
-
-    p {
-        font-size: 1.1rem;
-    }
-
-    /* .leadPhoto {
-        height: 80%;
-        width: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    } */
-
-    img {
-        width: 100%;
-        height: 100%;
-        border-radius: 3%;
-    }
-
-    .leadText,
-    .subCopy,
-    .smallHead {
-        width: 90%;
+        overflow: hidden;
+        isolation: isolate;
         color: var(--text);
     }
 
+    .hero-text {
+        width: 50%;
+    }
+
+    .smallHead {
+        margin-bottom: -2rem;
+    }
     .subCopy {
         margin-top: -1rem;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.12rem;
     }
 
     .leadText h1 {
@@ -78,12 +70,144 @@ import Button from "../components/primarybutton.astro";
         line-height: 1.2;
     }
 
-    .smallHead {
-        margin-bottom: -2rem;
+    p {
+        font-size: 1.1rem;
     }
 
     .cta {
         margin-top: 1.2rem;
-        width: 90%;
+    }
+    .cta a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .image-wrapper img {
+        filter: var(--filter);
+        mix-blend-mode: var(--mixBlend);
+        opacity: var(--opacity);
+    }
+
+    @media (max-width: 744px) {
+        .leadText h1 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        .cta {
+            width: 60%;
+        }
+
+        .container {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .image-wrapper {
+            position: absolute;
+            width: 10%;
+            top: 1%;
+            right: 85%;
+        }
+
+        .image-wrapper img {
+            object-fit: contain;
+            width: 1400%;
+        }
+
+        .hero-text {
+            width: 90%;
+            z-index: 1;
+        }
+    }
+
+    @media (min-width: 745px) and (max-width: 1133px) {
+        .leadText h1 {
+            font-size: 3.5rem;
+        }
+        h3 {
+            font-size: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .cta {
+            width: 100%;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .image-wrapper {
+            position: absolute;
+            width: 10%;
+            top: 0.5%;
+            right: 60%;
+        }
+
+        .image-wrapper img {
+            object-fit: contain;
+            width: 800%;
+        }
+
+        .hero-text {
+            width: 70%;
+            z-index: 1;
+        }
+
+        .cta {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 1134px) {
+        .leadText h1 {
+            font-size: 4rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .cta {
+            width: 40%;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .image-wrapper {
+            position: absolute;
+            width: 50%;
+            top: 1%;
+            right: 0%;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .hero-text {
+            width: 50%;
+            z-index: 1;
+        }
     }
 </style>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const image = document.querySelector(".image-wrapper img");
+        const scrollY = window.scrollY;
+        image.style.transform = `translateY(${scrollY * 0.5}px)`; // Adjust speed here
+    });
+</script>

@@ -1,0 +1,163 @@
+---
+export interface ExperienceBoxProps {
+    url: string;
+    date: string;
+    companyName: string;
+    jobTitle: string;
+    jobDescription: string;
+    skills: string[];
+}
+
+export interface Props {
+    items: ExperienceBoxProps[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="experienceWrapper">
+    {
+        items.map((item) => (
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <div class="experienceBlock">
+                    <div class="date">{item.date}</div>
+                    <div class="jobInfo">
+                        <div class="leadInfo">
+                            <span class="companyName">{item.companyName}</span>
+                            &bull; <span class="jobTitle">
+                                {item.jobTitle}
+                            </span>{" "}
+                            <i class="fa-solid fa-arrow-up-right-from-square" />
+                        </div>
+
+                        <div class="jobDescription">{item.jobDescription}</div>
+                        <div class="skillGroup">
+                            {item.skills.map((skill) => (
+                                <div class="skillBubble">{skill}</div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        ))
+    }
+</div>
+
+<style>
+    .experienceWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        color: var(--text);
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .experienceBlock {
+        background-color: var(--bg);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 1px solid var(--faint-border);
+        transition:
+            background-color 0.2s ease,
+            border 0.2s ease;
+        cursor: pointer;
+    }
+
+    .experienceBlock:hover {
+        background-color: var(--surface);
+        border: 1px solid var(--brand);
+    }
+
+    .experienceBlock:hover .fa-arrow-up-right-from-square {
+        color: var(--brand);
+        transform: translate(4px, -4px);
+    }
+
+    .date {
+        width: 15%;
+        font-size: var(--font-small);
+        color: var(--text-muted);
+    }
+
+    .jobTitle {
+        font-style: italic;
+    }
+
+    .jobInfo {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .skillGroup {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .skillBubble {
+        background-color: var(--brand-hl4);
+        color: var(--brand);
+        display: inline-block;
+        width: auto;
+        padding: 0.4rem;
+        font-size: var(--font-small);
+        border-radius: 0.5rem;
+    }
+
+    .jobDescription {
+        color: var(--text-muted);
+        font-size: var(--font-small);
+    }
+
+    .companyName {
+        font-weight: bold;
+        color: var(--text);
+    }
+
+    .leadInfo {
+        letter-spacing: 0.02rem;
+    }
+
+    .fa-arrow-up-right-from-square {
+        color: var(--text-muted);
+        font-size: var(--font-small);
+        margin-left: 0.4rem;
+        transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    @media (max-width: 744px) {
+        .experienceBlock {
+            flex-direction: column;
+        }
+
+        .date {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 0.5rem;
+        }
+
+        .jobInfo {
+            width: 100%;
+        }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        .experienceBlock {
+            background-color: var(--surface);
+        }
+    }
+</style>

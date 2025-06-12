@@ -7,13 +7,18 @@
 </button>
 
 <style>
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+
     .buttonClass {
         font-family: "Poppins", monospace;
         background-color: transparent;
         border: 1px #2e3a59 solid;
         cursor: pointer;
         color: #2e3a59;
-        border-radius: 7px;
+        border-radius: 0.45rem;
         padding: 0.75rem;
         width: 100%;
     }
@@ -26,10 +31,6 @@
 
     .buttonPrimary:hover {
         background-color: var(--brand-hl2);
-    }
-
-    .scaler {
-        transform: scale(1.10;);
     }
 
     .clicked {
@@ -144,11 +145,6 @@
 
         button.addEventListener("mouseleave", () => {
             button.classList.remove("clicked", "rebound", "relax");
-        });
-
-        button.addEventListener("mouseenter", () => {
-            button.classList.add("scaler");
-            console.log("class added");
         });
     });
 </script>

@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+import ExperienceBlock from "../components/experiencebox.astro";
+
+const experienceBlockItems = [
+    {
+        url: "https://www.mainstreetadv.com",
+        date: "2017-2024",
+        companyName: "MainStreet Advisors",
+        jobTitle: "Graphic Designer",
+        jobDescription:
+            "Drove the firm’s digital brand presence by overhauling the public-facing website and standardizing weekly client communications into a scalable design system. Partnered with marketing and IT to ship ~100 brand-consistent web and print assets each month, automated template workflows that cut production time up to 75%, and elevated stakeholder trust through accessible, on-brand experiences.",
+        skills: [
+            "Web Design",
+            "HTML & CSS",
+            "Process Automation",
+            "Visual Basic",
+            "Brand Governance",
+        ],
+    },
+    {
+        url: "https://www.mason-weis.com",
+        date: "2016-2018",
+        companyName: "Freelance",
+        jobTitle: "Freelance Art Director & Designer",
+        jobDescription:
+            "Led end-to-end creative for multiple clients, crafting three complete identity systems and delivering 50+ digital assets per month. Balanced discovery, design, and feedback across 10+ concurrent projects to achieve 100% on-time delivery while boosting event sign-ups and membership engagement.",
+        skills: ["Adobe CC", "Brand Development", "Project Management"],
+    },
+    {
+        url: "https://www.perkspot.com",
+        date: "2017",
+        companyName: "PerkSpot",
+        jobTitle: "Design Associate",
+        jobDescription:
+            "Produced 10–15 partner-branded promo pieces each week for companies like Southwest and Starbucks, maintaining strict visual-identity guidelines and driving user engagement via social channels. Aided in development of social-media content calendar that expanded brand visibility. ",
+        skills: ["Brand Governance", "Web Asset Optimization", "Web Analytics"],
+    },
+    {
+        url: "https://www.upcloseprinting.com/",
+        date: "2016-2017",
+        companyName: "UpClose Printing",
+        jobTitle: "Graphic Designer",
+        jobDescription:
+            "Turned around up to 25 custom designs weekly for 50+ small-business clients, meeting tight print deadlines while preserving visual quality and brand accuracy.",
+        skills: ["Design", "Quality Assurance"],
+    },
+];
+---
+
+<div class="container">
+    <div class="header">
+        <h3>Experience</h3>
+    </div>
+    <ExperienceBlock items={experienceBlockItems} />
+</div>
+
+<style>
+    .container {
+        margin-bottom: 3rem;
+    }
+</style>

@@ -9,11 +9,17 @@
     --brand-highlight: #3662e322;
     --brand-hl2: #3662e3ee;
     --brand-hl3: #3662e377;
+    --brand-hl4: #3662e344;
     --disabled: #00000011;
     --disabled-dark: #00000033;
     --divider: #e0e0e0;
     --button-border: #ccc;
+    --faint-border: #dedede;
     --hero-gradient: linear-gradient(315deg, #3662e377, #f8f7f4);
+    --duotone-tint: linear-gradient(135deg, #5a75ff, #e7e3da);
+    --filter: grayscale(100%) brightness(1) contrast(1);
+    --mixBlend: hard-light;
+    --opacity: 0.3;
 
     --font-small: 0.85rem;
     --font-base: 1rem;
@@ -23,6 +29,10 @@
 
     --dropShadow: 0 3px 6px rgba(0, 0, 0, 0.08);
     --bordRad: 10%;
+    --pagePadding-sm: 0 2rem;
+    --pagePadding: 0 5rem;
+    --pagePadding-lg: 0 10rem;
+    --hfPadding: 0 2rem;
 }
 
 html.dark {
@@ -38,7 +48,21 @@ html.dark {
     --disabled-dark: #ffffff33;
     --divider: #222222;
     --button-border: #444444;
-    --hero-gradient: linear-gradient(315deg, #3662e377, #15181b);
+    --faint-border: #323232;
+    --hero-gradient: linear-gradient(
+        315deg,
+        #3662e377,
+        #1e2124 80%,
+        #1e2124 100%
+    );
+    --duotone-tint: linear-gradient(135deg, #5a75ff, #1e2124);
+    --filter: grayscale(100%) brightness(1.2) contrast(0.9);
+    --mixBlend: multiply;
+    --opacity: 0.8;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 html,
@@ -53,10 +77,8 @@ body {
 }
 
 .container {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: var(--bg);
 }
 
@@ -66,8 +88,12 @@ body {
 
 .subCopy {
     color: var(--text-muted);
-    width: 90%;
+    /* width: 90%; */
     margin-top: -1rem;
+}
+
+.hidden {
+    display: none;
 }
 
 @media (max-width: 744px) {
@@ -76,6 +102,50 @@ body {
     }
 
     h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: var(--pagePadding-sm);
+    }
+}
+
+@media (min-width: 745px) and (max-width: 1133px) {
+    .container {
+        padding: var(--pagePadding);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1134px) {
+    .container {
+        padding: var(--pagePadding-lg);
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
         font-size: 1.8rem;
     }
 }

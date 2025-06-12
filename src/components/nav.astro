@@ -1,22 +1,20 @@
 ---
 import { Icon } from "astro-icon/components";
+import FontAwesome from "../components/fontawesome.astro";
 ---
 
 <div class="navbar">
-    <h1>Mason Weis</h1>
+    <h1 class="logo">Mason Weis</h1>
     <nav class="navLinks">
         <ul>
-            <li><a href="#">Buttons</a></li>
-            <li><a href="#">Cards</a></li>
-            <li><a href="#">Navigation</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Interactions</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
     <div class="hamburgerDiv" aria-label="menu">
         <!-- TODO Make the hamburger look better -->
         <button class="hamburger">
-            <Icon name="mdi:hamburger-menu" />
+            <i id="burgerIcon" class="fa-solid fa-bars"></i>
         </button>
     </div>
 </div>
@@ -33,20 +31,38 @@ import { Icon } from "astro-icon/components";
 
     .hamburger {
         color: var(--text);
-        border: 1.5px solid var(--text);
-        width: 2.5rem;
-        height: 2.5rem;
+        border: none;
+        /* width: 2.5rem;
+        height: 2.5rem; */
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
         background-color: transparent;
-        border-radius: 10%;
+        font-size: 1.5rem;
     }
 
     h1 {
         color: var(--text);
-        font-size: 1.5rem;
+    }
+
+    .navLinks ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+    }
+
+    .navLinks a {
+        color: var(--text);
+        text-decoration: none;
+        padding: 1rem;
+        border-radius: 0.45rem;
+        font-weight: 500;
+    }
+
+    .navLinks a:hover {
+        background-color: #3662e322;
+        color: var(--brand);
     }
 
     @media (max-width: 744px) {
@@ -65,18 +81,95 @@ import { Icon } from "astro-icon/components";
         .navLinks {
             display: none;
         }
+
+        .logo {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (min-width: 745px) and (max-width: 1133px) {
+        .navLinks {
+            display: none;
+        }
+
+        .hamburgerDiv,
+        .hamburger {
+            display: block;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1134px) {
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 3rem;
+        }
+
+        .navLinks {
+            display: block;
+        }
+
+        .hamburgerDiv,
+        .hamburger {
+            display: none;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            transition: font-size 0.3s ease;
+        }
+
+        .logo.logoScrolled {
+            font-size: 1.5rem;
+            transition: font-size 0.3s ease;
+        }
     }
 </style>
 
 <script>
     const navBar = document.querySelector(".navbar");
+    const hamburger = document.querySelector(".hamburger");
+    const logo = document.querySelector(".logo");
     window.onscroll = () => {
         if (window.scrollY > 0) {
             navBar.style.backgroundColor = "var(--bg)";
             navBar.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
+            logo.classList.add("logoScrolled");
         } else {
             navBar.style.backgroundColor = "transparent";
             navBar.style.boxShadow = "none";
+            logo.classList.remove("logoScrolled");
         }
     };
+
+    const menuOverlay = () => {
+        const mobileOverlay = document.querySelector(".mobileOverlay");
+        const burgerIcon = document.querySelector("#burgerIcon");
+        mobileOverlay.classList.toggle("active");
+        if (mobileOverlay.classList.contains("active")) {
+            console.log("Menu is active");
+            burgerIcon.setAttribute("class", "fa-solid fa-xmark");
+        } else {
+            console.log("Menu is inactive");
+            burgerIcon.setAttribute("class", "fa-solid fa-bars");
+        }
+    };
+
+    hamburger.addEventListener("click", () => {
+        menuOverlay();
+    });
 </script>

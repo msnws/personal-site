@@ -8,6 +8,9 @@ import About from "../layouts/about.astro";
 import Experience from "../layouts/experience.astro";
 import Contact from "../layouts/contact.astro";
 import Footer from "../components/footer.astro";
+import MenuOverlay from "../components/menuoverlay.astro";
+import FontAwesome from "../components/fontawesome.astro";
+import Experience2 from "../layouts/experience2.astro";
 ---
 
 <!-- Remove Base Layout and put its contents here. --><!doctype html>
@@ -17,6 +20,7 @@ import Footer from "../components/footer.astro";
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Mason Weis</title>
         <FontHead />
+        <FontAwesome />
     </head>
     <body>
         <header>
@@ -31,8 +35,8 @@ import Footer from "../components/footer.astro";
             <section id="about">
                 <About />
             </section>
-            <section id="experience">
-                <Experience />
+            <section id="experience2">
+                <Experience2 />
             </section>
             <section id="contact">
                 <Contact />
@@ -41,6 +45,9 @@ import Footer from "../components/footer.astro";
         <footer>
             <Footer />
         </footer>
+        <div class="mobileOverlay">
+            <MenuOverlay />
+        </div>
     </body><script src="../scripts/darkmodeinit.js"></script>
 </html>
 
@@ -64,6 +71,39 @@ import Footer from "../components/footer.astro";
     #experience {
         z-index: -1;
         padding-bottom: 2rem;
+    }
+
+    .mobileOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+            opacity 0.1s ease,
+            visibility 0s linear 0.4s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        color: var(--text);
+        /* backdrop-filter: blur(6px); */
+        /* -webkit-backdrop-filter: blur(6px); */
+    }
+
+    .mobileOverlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition:
+            opacity 0.4s ease,
+            visibility 0s linear 0s;
     }
 </style>
 

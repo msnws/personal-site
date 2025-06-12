@@ -64,17 +64,11 @@ const { items, idPrefix } = Astro.props;
 </div>
 
 <style>
-    /* Assuming these CSS variables are defined globally (e.g., in a global.css or :root) */
-    /* var(--surface), var(--text), var(--brand) */
-
     .accordion-wrapper {
-        width: 90%; /* Matches original .accordion width relative to its container */
-        margin-left: auto;
-        margin-right: auto;
+        /* margin-left: auto;
+        margin-right: auto; */
         box-shadow: var(--dropShadow);
     }
-
-    /* .accordion-item-container is a structural div, no specific styles from original */
 
     .accordion-trigger {
         background-color: var(--surface);
@@ -108,17 +102,16 @@ const { items, idPrefix } = Astro.props;
         overflow: hidden;
         max-height: 0; /* Collapsed by default */
         transition: max-height 0.3s ease-out; /* Smooth expand/collapse animation */
-        width: 100%;
-        /* The panel itself does not have a border in the original design */
+        /* width: 100%; */
     }
 
     .panel-content-inner {
-        padding: 0 18px; /* Horizontal padding as per original .panel */
+        padding: 0 1rem; /* Horizontal padding as per original .panel */
     }
 
     .accordion-panel.active .panel-content-inner {
-        padding-top: 18px; /* Add vertical padding when panel is active/open */
-        padding-bottom: 18px;
+        padding-top: 1rem; /* Add vertical padding when panel is active/open */
+        padding-bottom: 1rem;
     }
 
     .chevron {
@@ -140,19 +133,19 @@ const { items, idPrefix } = Astro.props;
 
     /* Rounded corners for the buttons */
     .accordion-trigger.accordion-top {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
+        border-top-left-radius: 0.45rem;
+        border-top-right-radius: 0.45rem;
     }
 
     .accordion-trigger.accordion-bottom {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 0.45rem;
+        border-bottom-right-radius: 0.45rem;
     }
 
     /* If an item is the only one, it's both top and bottom, so both above rules apply.
      If you need specific styling for a single item (e.g., all corners rounded 10px always): */
     .accordion-trigger.accordion-top.accordion-bottom {
-        border-radius: 7px;
+        border-radius: 0.45rem;
     }
 </style>
 
