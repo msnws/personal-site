@@ -6,6 +6,9 @@
     --text: #0f1214;
     --text-muted: #5a5a5a;
     --text-transparent: #1e1e1eee;
+    --text-dark: #111827;
+    --text-light: #ffffff;
+    --text-gray: #4b5563;
     --brand-highlight: #3662e322;
     --brand-hl2: #3662e3ee;
     --brand-hl3: #3662e377;
@@ -44,6 +47,9 @@ html.dark {
     --text-muted: #b0b0b0;
     --text-muted-dark: #888;
     --text-transparent: #eaeaeaee;
+    --text-dark: #eaeaea;
+    --text-light: #ffffff;
+    --text-gray: #b0b0b0;
     --disabled: #ffffff11;
     --disabled-dark: #ffffff33;
     --divider: #222222;
