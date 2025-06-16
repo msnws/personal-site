@@ -3,9 +3,9 @@ import Button from "../components/primarybutton.astro";
 ---
 
 <div class="contactForm">
-    <form action="mailto:mason@mason-weis.com">
+    <form action="https://formspree.io/f/xwpbbdkg" method="POST">
         <div class="nameAndEmail">
-            <div class="nameInputHalf">
+            <div class="nameInput">
                 <label for="name">Name:</label>
                 <input
                     type="text"
@@ -16,10 +16,10 @@ import Button from "../components/primarybutton.astro";
                     placeholder="Your Name"
                 />
             </div>
-            <div class="emailInputHalf">
+            <div class="emailInput">
                 <label for="email">Email:</label>
                 <input
-                    type="text"
+                    type="email"
                     id="email"
                     name="email"
                     required
@@ -27,28 +27,6 @@ import Button from "../components/primarybutton.astro";
                     placeholder="example@email.com"
                 />
             </div>
-        </div>
-        <div class="nameInput">
-            <label for="name">Name:</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="inputClass"
-                placeholder="Your Name"
-            />
-        </div>
-        <div class="emailInput">
-            <label for="email">Email:</label>
-            <input
-                type="text"
-                id="email"
-                name="email"
-                required
-                class="inputClass"
-                placeholder="example@email.com"
-            />
         </div>
         <div class="messageInput">
             <label for="message">Message:</label>
@@ -60,186 +38,235 @@ import Button from "../components/primarybutton.astro";
                 placeholder="Your message here..."></textarea>
         </div>
         <div class="submitButton">
-            <Button type="submit" value="Submit">Submit</Button>
+            <Button type="submit">Submit</Button>
+            <div class="formSuccess hidden">
+                <p aria-live="polite">
+                    Thank you for your message! I'll be in touch soon.
+                </p>
+            </div>
         </div>
     </form>
+</div>
 
-    <style>
+<style>
+    form {
+        background-color: var(--surface);
+        border-radius: 0.45rem;
+        box-shadow: var(--dropShadow);
+    }
+
+    .inputClass {
+        border-radius: 0.45rem;
+        background-color: var(--bg);
+        border: 1.5px solid var(--button-border);
+    }
+
+    .nameInput,
+    .emailInput,
+    .messageInput {
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        color: var(--text);
+        /* text-transform: uppercase; */
+        font-weight: 400;
+        font-size: var(--font-small);
+    }
+
+    input:focus-within,
+    textarea:focus-within {
+        border: 1.5px solid var(--brand);
+        outline: none;
+    }
+
+    .submitButton {
+        margin-top: 1.5rem;
+        width: 40%;
+    }
+
+    .hidden {
+        display: none;
+        transition: display 0.3s ease-in-out;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--text-muted-dark);
+        font-family: "Poppins", sans-serif;
+    }
+
+    input,
+    textarea {
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .formSuccess {
+        margin-top: 1rem;
+        text-align: center;
+        color: var(--secondary);
+        background-color: var(--brand-highlight);
+        border: 1px solid var(--secondary);
+        border-radius: 0.45rem;
+    }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+
+    @media (max-width: 744px) {
         form {
-            background-color: var(--surface);
-            border-radius: 0.45rem;
-            box-shadow: var(--dropShadow);
-        }
-
-        .nameAndEmail {
-            display: none;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1.3rem;
+            gap: 0.5rem;
+            /* width: 90%; */
+            justify-items: center;
         }
 
         .inputClass {
-            border-radius: 0.45rem;
-            background-color: var(--bg);
-            border: 1.5px solid var(--button-border);
+            padding: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .nameInput,
-        .emailInput,
-        .messageInput {
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
+        textarea {
+            resize: none;
+            height: 10rem;
         }
 
         label {
-            color: var(--text);
-            /* text-transform: uppercase; */
-            font-weight: 400;
-            font-size: var(--font-small);
-        }
-
-        input:focus-within,
-        textarea:focus-within {
-            border: 1.5px solid var(--brand);
-            outline: none;
-        }
-
-        .submitButton {
-            margin-top: 1.5rem;
-            width: 40%;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: var(--text-muted-dark);
-            font-family: "Poppins", sans-serif;
+            margin-bottom: 0.5rem;
         }
 
         input,
+        textarea,
+        input::placeholder,
+        textarea::placeholder {
+            font-size: var(--font-small);
+        }
+    }
+
+    @media (min-width: 745px) and (max-width: 1133px) {
+        form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1.3rem;
+            gap: 0.5rem;
+            justify-items: center;
+        }
+
+        .inputClass {
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
         textarea {
-            color: var(--text);
-            font-family: "Poppins", sans-serif;
+            resize: none;
+            height: 10rem;
         }
 
-        @media (max-width: 744px) {
-            form {
-                margin-top: 1rem;
-                display: flex;
-                flex-direction: column;
-                padding: 1.5rem 1.3rem;
-                gap: 0.5rem;
-                /* width: 90%; */
-                justify-items: center;
-            }
-
-            .inputClass {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            textarea {
-                resize: none;
-                height: 10rem;
-            }
-
-            label {
-                margin-bottom: 0.5rem;
-            }
-
-            input,
-            textarea,
-            input::placeholder,
-            textarea::placeholder {
-                font-size: var(--font-small);
-            }
+        label {
+            margin-bottom: 0.5rem;
         }
 
-        @media (min-width: 745px) and (max-width: 1133px) {
-            form {
-                margin-top: 2rem;
-                display: flex;
-                flex-direction: column;
-                padding: 1.5rem 1.3rem;
-                gap: 0.5rem;
-                justify-items: center;
-            }
+        input,
+        textarea,
+        input::placeholder,
+        textarea::placeholder {
+            font-size: var(--font-small);
+        }
+    }
 
-            .nameAndEmail {
-                display: none;
-            }
-
-            .inputClass {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            textarea {
-                resize: none;
-                height: 10rem;
-            }
-
-            label {
-                margin-bottom: 0.5rem;
-            }
-
-            input,
-            textarea,
-            input::placeholder,
-            textarea::placeholder {
-                font-size: var(--font-small);
-            }
+    @media (min-width: 1134px) {
+        form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            padding: 3rem;
+            gap: 0.5rem;
+            justify-items: center;
         }
 
-        @media (min-width: 1134px) {
-            form {
-                margin-top: 2rem;
-                display: flex;
-                flex-direction: column;
-                padding: 3rem;
-                gap: 0.5rem;
-                justify-items: center;
-            }
-
-            .nameAndEmail {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .nameInputHalf,
-            .emailInputHalf {
-                width: 48%;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .nameInput,
-            .emailInput {
-                display: none;
-            }
-
-            .inputClass {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            textarea {
-                resize: none;
-                height: 10rem;
-            }
-
-            label {
-                margin-bottom: 0.5rem;
-            }
-
-            input,
-            textarea,
-            input::placeholder,
-            textarea::placeholder {
-                font-size: var(--font-small);
-            }
-
-            .submitButton {
-                width: 20%;
-            }
+        .nameInput,
+        .emailInput {
+            width: 48%;
         }
-    </style>
-</div>
+
+        .nameAndEmail {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .inputClass {
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            resize: none;
+            height: 10rem;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        textarea,
+        input::placeholder,
+        textarea::placeholder {
+            font-size: var(--font-small);
+        }
+
+        .submitButton {
+            width: 20%;
+        }
+    }
+</style>
+
+<script is:inline>
+    const form = document.querySelector('form[action^="https://formspree"]');
+    const banner = document.querySelector(".formSuccess");
+    const button = document.querySelector(".submitButton button");
+    const submitDiv = document.querySelector(".submitButton");
+    const inputFields = document.querySelectorAll(
+        ".nameInput input, .emailInput input, .messageInput textarea",
+    );
+
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            banner.classList.add("hidden"); // hide old status, if any
+            try {
+                const resp = await fetch(form.action, {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: { Accept: "application/json" },
+                });
+
+                if (resp.ok) {
+                    form.reset();
+                    button.classList.add("hidden");
+                    inputFields.forEach((input) => {
+                        input.classList.add("disabled");
+                        input.setAttribute("placeholder", "");
+                    });
+                } else {
+                    banner.textContent =
+                        "Hmm… there was a problem. Please try again.";
+                }
+            } catch {
+                banner.textContent = "Network error — please try again.";
+            }
+            submitDiv.style.width = "100%";
+            banner.classList.remove("hidden");
+        });
+    }
+</script>

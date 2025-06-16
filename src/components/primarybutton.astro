@@ -1,6 +1,15 @@
+---
+export interface Props {
+    type?: "button" | "submit" | "reset";
+    class?: string;
+}
+
+const { type = "button", class: cls = "" } = Astro.props;
+---
+
 <button
-    class="buttonPrimary buttonClass"
-    type="button"
+    class={`buttonClass buttonPrimary ${cls}`}
+    type={type}
     aria-label="Primary Button"
 >
     <span class="button-text"><slot /></span>
@@ -8,7 +17,7 @@
 
 <style>
     a {
-        color: var(--surface);
+        color: #fff;
         text-decoration: none;
     }
 
@@ -24,7 +33,7 @@
     }
     .buttonPrimary {
         background-color: var(--brand);
-        color: var(--surface);
+        color: #fff;
         border: 1px solid transparent;
         font-weight: 400;
     }
@@ -53,7 +62,6 @@
             font-size: var(--font-small);
         }
     }
-
 </style>
 
 <script>

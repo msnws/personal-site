@@ -78,7 +78,7 @@ import Button from "../components/primarybutton.astro";
         margin-top: 1.2rem;
     }
     .cta a {
-        color: var(--surface);
+        color: #fff;
         text-decoration: none;
     }
 
@@ -116,7 +116,7 @@ import Button from "../components/primarybutton.astro";
         }
 
         .image-wrapper img {
-            object-fit: contain;
+            object-fit: cover;
             width: 1400%;
         }
 
@@ -152,7 +152,7 @@ import Button from "../components/primarybutton.astro";
         }
 
         .image-wrapper img {
-            object-fit: contain;
+            object-fit: cover;
             width: 800%;
         }
 
@@ -163,6 +163,34 @@ import Button from "../components/primarybutton.astro";
 
         .cta {
             width: 50%;
+        }
+
+        @media (min-width: 745px) and (max-width: 1133px) and (min-height: 1100px) {
+            .image-wrapper img {
+                object-fit: cover;
+                height: 100%;
+                width: auto;
+                width: 1000%;
+            }
+
+            .image-wrapper {
+                top: 0;
+                right: 70%;
+            }
+
+            @media (min-width: 745px) and (max-width: 1133px) and (min-height: 1450px) {
+                .image-wrapper img {
+                    object-fit: cover;
+                    height: 100%;
+                    width: auto;
+                    width: 1200%;
+                }
+
+                .image-wrapper {
+                    top: 0;
+                    right: 80%;
+                }
+            }
         }
     }
 
@@ -193,7 +221,7 @@ import Button from "../components/primarybutton.astro";
 
         .image-wrapper img {
             width: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
         }
 
@@ -201,6 +229,63 @@ import Button from "../components/primarybutton.astro";
             width: 50%;
             z-index: 1;
         }
+
+        @media (max-width: 1400px) and (min-height: 1100px) {
+            .image-wrapper img {
+                object-fit: cover;
+                height: 100%;
+                width: auto;
+                width: 130%;
+            }
+
+            .image-wrapper {
+                position: absolute;
+                top: 1%;
+                right: 10%;
+            }
+
+            @media (min-width: 1400px) and (min-height: 1400px) {
+                .image-wrapper img {
+                    object-fit: cover;
+                    height: 100%;
+                    width: auto;
+                    width: 150%;
+                }
+
+                .image-wrapper {
+                    position: absolute;
+                    top: 1%;
+                    right: 15%;
+                }
+            }
+        }
+
+        @media (max-width: 1600px) and (min-height: 1350px) {
+            .image-wrapper img {
+                object-fit: cover;
+                height: 100%;
+                width: 150%;
+            }
+
+            .image-wrapper {
+                position: absolute;
+                top: 1%;
+                right: 15%;
+            }
+        }
+
+        @media (max-width: 1800px) and (min-height: 1500px) {
+            .image-wrapper img {
+                object-fit: cover;
+                height: 100%;
+                width: 150%;
+            }
+
+            .image-wrapper {
+                position: absolute;
+                top: 1%;
+                right: 20%;
+            }
     }
 </style>
 
