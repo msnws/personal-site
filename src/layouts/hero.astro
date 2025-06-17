@@ -1,7 +1,7 @@
 ---
 import Button from "../components/primarybutton.astro";
-import { Image } from 'astro:assets';
-import masonImage from '../assets/mason-photo-2.png'
+import { Image } from "astro:assets";
+import masonImage from "../assets/mason-photo-2.png";
 ---
 
 <div class="container">
@@ -106,21 +106,44 @@ import masonImage from '../assets/mason-photo-2.png'
             justify-content: space-between;
         }
 
-        .image-wrapper {
-            position: absolute;
-            width: 10%;
-            top: 1%;
-            right: 85%;
-        }
-
-        .image-wrapper img {
-            object-fit: cover;
-            width: 1400%;
-        }
-
         .hero-text {
             width: 90%;
             z-index: 1;
+        }
+
+        .image-wrapper {
+            position: absolute;
+            width: 10%;
+        }
+
+        .image-wrapper img {
+            object-fit: contain;
+            width: 40rem;
+            margin-top: 22rem;
+        }
+
+        @media (max-width: 430px) {
+            .image-wrapper {
+                right: 100%;
+            }
+        }
+
+        @media (min-width: 431px) and (max-width: 550px) {
+            .image-wrapper {
+                right: 90%;
+            }
+        }
+
+        @media (min-width: 551px) and (max-width: 675px) {
+            .image-wrapper {
+                right: 80%;
+            }
+        }
+
+        @media (min-width: 676px) and (max-width: 744px) {
+            .image-wrapper {
+                right: 70%;
+            }
         }
     }
 
@@ -142,18 +165,6 @@ import masonImage from '../assets/mason-photo-2.png'
             position: relative;
         }
 
-        .image-wrapper {
-            position: absolute;
-            width: 10%;
-            top: 0.5%;
-            right: 60%;
-        }
-
-        .image-wrapper img {
-            object-fit: cover;
-            width: 800%;
-        }
-
         .hero-text {
             width: 70%;
             z-index: 1;
@@ -161,6 +172,48 @@ import masonImage from '../assets/mason-photo-2.png'
 
         .cta {
             width: 50%;
+        }
+
+        @media (min-width: 745px) and (max-width: 850px) {
+            .image-wrapper {
+                position: absolute;
+                width: 10%;
+                right: 65%;
+            }
+
+            .image-wrapper img {
+                object-fit: contain;
+                max-width: 40rem;
+                margin-top: 22rem;
+            }
+        }
+
+        @media (min-width: 851px) and (max-width: 990px) {
+            .image-wrapper {
+                position: absolute;
+                width: 10%;
+                right: 60%;
+            }
+
+            .image-wrapper img {
+                object-fit: contain;
+                max-width: 40rem;
+                margin-top: 20rem;
+            }
+        }
+
+        @media (min-width: 991px) and (max-width: 1133px) {
+            .image-wrapper {
+                position: absolute;
+                width: 10%;
+                right: 50%;
+            }
+
+            .image-wrapper img {
+                object-fit: contain;
+                max-width: 40rem;
+                margin-top: 20rem;
+            }
         }
 
         @media (min-width: 745px) and (max-width: 1133px) and (min-height: 1100px) {
@@ -192,7 +245,7 @@ import masonImage from '../assets/mason-photo-2.png'
         }
     }
 
-    @media (min-width: 1134px) {
+    @media (min-width: 1134px) and (max-width: 1299px) {
         .leadText h1 {
             font-size: 4rem;
         }
@@ -210,17 +263,54 @@ import masonImage from '../assets/mason-photo-2.png'
             position: relative;
         }
 
+        .hero-text {
+            width: 50%;
+            z-index: 1;
+        }
+
         .image-wrapper {
             position: absolute;
             width: 50%;
-            top: 1%;
-            right: 0%;
+            left: 40%;
         }
 
         .image-wrapper img {
-            width: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            width: 120%;
+            margin-top: 30rem;
             display: block;
+        }
+    }
+
+    @media (min-width: 1300px) {
+        .image-wrapper {
+            position: absolute;
+            width: 50%;
+            left: 50%;
+        }
+
+        .image-wrapper img {
+            object-fit: contain;
+            max-width: 50rem;
+            margin-top: 35rem;
+            display: block;
+        }
+
+        .leadText h1 {
+            font-size: 4rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .cta {
+            width: 40%;
+        }
+
+        .container {
+            position: relative;
         }
 
         .hero-text {
@@ -284,6 +374,7 @@ import masonImage from '../assets/mason-photo-2.png'
                 top: 1%;
                 right: 20%;
             }
+        }
     }
 </style>
 
