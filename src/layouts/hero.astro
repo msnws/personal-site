@@ -1,5 +1,7 @@
 ---
 import Button from "../components/primarybutton.astro";
+import { Image } from 'astro:assets';
+import masonImage from '../assets/mason-photo-2.png'
 ---
 
 <div class="container">
@@ -18,11 +20,7 @@ import Button from "../components/primarybutton.astro";
         </div>
     </div>
     <div class="image-wrapper">
-        <img
-            src="src/assets/mason-photo-2.png"
-            loading="lazy"
-            decoding="async"
-        />
+        <Image src={masonImage} alt="Photo of Mason Weis" class="mImage" />
     </div>
 </div>
 
